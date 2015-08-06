@@ -16,11 +16,13 @@ SideScroller.Game.prototype = {
     this.backgroundlayer = this.map.createLayer('backgroundLayer');
     this.groundLayer = this.map.createLayer('Ground');
     this.dangerLayer = this.map.createLayer('Danger');
+    this.endLayer = this.map.createLayer('end');
       
     //collision on blockedLayer
     this.map.setCollisionBetween(1, 5000, true, this.groundLayer);
     this.map.setCollisionBetween(1, 5000, true, this.dangerLayer);
-
+    this.map.setCollisionBetween(1, 5000, true, this.endLayer);
+      
     //resizes the game world to match the layer dimensions
     this.backgroundlayer.resizeWorld();
 
@@ -29,8 +31,6 @@ SideScroller.Game.prototype = {
     
     //create enemy  
     this.createEnemy(); 
-    //this.enemy.body.gravity.y = 1200;
-      console.log (this.enemy);
 
     //create player
     this.player = this.game.add.sprite(100, 300, 'player');
@@ -97,9 +97,11 @@ SideScroller.Game.prototype = {
       //walking 
       if (sprite['direction'] =='right'){
         console.log ('right');
+        //sprite.direction = 'right';
         sprite.body.velocity.x = 20;}
       else if (sprite['direction'] =='left'){
         console.log ('left');
+       // sprite.direction = 'left';
         sprite.scale.x *= -1;
         sprite.body.velocity.x = -20;}
       else {
@@ -112,6 +114,7 @@ SideScroller.Game.prototype = {
     this.game.physics.arcade.overlap(this.player, this.coins, this.collect, null, this);
     this.game.physics.arcade.collide(this.player, this.enemy, this.playerHit, null, this);  
      this.game.physics.arcade.collide(this.enemy, this.groundLayer, null, null, this);   
+     this.game.physics.arcade.collide(this.enemy, this.endLayer, this.enemyTurn, null, this); 
     
     //only respond to keys and keep the speed if the player is alive
     if(this.player.alive) {
@@ -148,12 +151,11 @@ SideScroller.Game.prototype = {
       }
         
     }
-
   },
   playerHit: function(player, groundLayer) {
     //if hits on the right side, die
 
-      console.log(player.body.blocked);
+     // console.log(player.body.blocked);
 
       //set to dead (this doesn't affect rendering)
       this.player.alive = false;
@@ -177,6 +179,24 @@ SideScroller.Game.prototype = {
     //remove sprite
     collectable.destroy();
   },
+  enemyTurn: function(enemy){
+      console.log ('turn');
+      enemy.scale.x *= -1;
+      if (enemy['direction'] == 'left') {
+          console.log ('right');
+          enemy['direction'] = 'right';
+          enemy.body.velocity.x = 20;
+          //this.turnRight;
+      }
+      else if (enemy) {
+          //console.log ('work')
+          console.log ('left');
+          enemy['direction'] = 'left';
+          enemy.body.velocity.x = -20;
+          //this.turnLeft;
+      }
+  },
+  //turnRight: func
   initGameController: function() {
 
     if(!GameController.hasInitiated) {
@@ -229,7 +249,7 @@ SideScroller.Game.prototype = {
     }, this);
   },
     //create enemy
-    createEnemy: function() {
+  createEnemy: function() {
     this.enemy = this.game.add.group();
     this.enemy.enableBody = true;
     var result = this.findObjectsByType('enemy', this.map, 'enemy');
