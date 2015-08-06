@@ -21,6 +21,7 @@ SideScroller.Preload.prototype = {
     this.load.image('playerDead', 'assets/images/player_dead_2.png');
     this.load.image('goldCoin', 'assets/images/goldCoin.png');      
     this.load.image('enemy', 'assets/images/Enemy.png');
+    this.load.image('invisible', 'assets/images/end.png');
     this.load.audio('coin', ['assets/audio/coin.ogg', 'assets/audio/coin.mp3']);
   },
   create: function() {

@@ -148,6 +148,43 @@
          "name":"end where",
          "opacity":0.529999971389771,
          "type":"tilelayer",
+         "visible":false,
+         "width":30,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "height":7,
+         "name":"enemyWalls",
+         "objects":[
+                {
+                 "height":71,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":70,
+                 "x":910,
+                 "y":279
+                }, 
+                {
+                 "height":67,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":67,
+                 "x":1261,
+                 "y":281
+                }],
+         "opacity":1,
+         "type":"objectgroup",
          "visible":true,
          "width":30,
          "x":0,
