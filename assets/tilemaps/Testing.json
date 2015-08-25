@@ -49,8 +49,8 @@
                  "type":"coin",
                  "visible":true,
                  "width":0,
-                 "x":711,
-                 "y":116
+                 "x":605,
+                 "y":119
                 }, 
                 {
                  "gid":143,
@@ -64,8 +64,8 @@
                  "type":"coin",
                  "visible":true,
                  "width":0,
-                 "x":546,
-                 "y":94
+                 "x":491,
+                 "y":128
                 }, 
                 {
                  "gid":143,
@@ -79,8 +79,8 @@
                  "type":"coin",
                  "visible":true,
                  "width":0,
-                 "x":1079,
-                 "y":334
+                 "x":1081,
+                 "y":342
                 }, 
                 {
                  "gid":143,
@@ -94,8 +94,22 @@
                  "type":"coin",
                  "visible":true,
                  "width":0,
-                 "x":1079,
-                 "y":334
+                 "x":760,
+                 "y":127
+                }, 
+                {
+                 "gid":143,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":41,
+                 "y":389
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -182,6 +196,97 @@
                  "width":67,
                  "x":1261,
                  "y":281
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":30,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "height":7,
+         "name":"polygon",
+         "objects":[
+                {
+                 "height":0,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":259,
+                         "y":1
+                        }, 
+                        {
+                         "x":209,
+                         "y":90
+                        }, 
+                        {
+                         "x":30,
+                         "y":97
+                        }, 
+                        {
+                         "x":13,
+                         "y":44
+                        }, 
+                        {
+                         "x":156,
+                         "y":36
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":983,
+                 "y":356
+                }, 
+                {
+                 "height":0,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":349,
+                         "y":-1
+                        }, 
+                        {
+                         "x":560,
+                         "y":-211
+                        }, 
+                        {
+                         "x":840,
+                         "y":-211
+                        }, 
+                        {
+                         "x":770,
+                         "y":-142
+                        }, 
+                        {
+                         "x":772,
+                         "y":1
+                        }, 
+                        {
+                         "x":-7,
+                         "y":81
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1,
+                 "y":352
                 }],
          "opacity":1,
          "type":"objectgroup",

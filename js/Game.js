@@ -13,15 +13,18 @@ SideScroller.Game.prototype = {
     this.map.addTilesetImage('tiles_spritesheet', 'gameTiles');
 
     //create layers
+      //this.map.addTilesetImage('backgroundLayer')
     this.backgroundlayer = this.map.createLayer('backgroundLayer');
     this.groundLayer = this.map.createLayer('Ground');
     this.dangerLayer = this.map.createLayer('Danger');
     //this.endLayer = this.map.createLayer('end');
-      
+            
+      var a = this.game.physics.p2.convertCollisionObjects(this.map, "polygon")
+
     //collision on blockedLayer
-    this.map.setCollisionBetween(1, 5000, true, this.groundLayer);
+   /* this.map.setCollisionBetween(1, 5000, true, this.groundLayer);
     this.map.setCollisionBetween(1, 5000, true, this.dangerLayer);
-    this.map.setCollisionBetween(1, 5000, true, this.endLayer);
+    this.map.setCollisionBetween(1, 5000, true, this.endLayer);*/
       
     //resizes the game world to match the layer dimensions
     this.backgroundlayer.resizeWorld();
@@ -39,10 +42,12 @@ SideScroller.Game.prototype = {
     this.player = this.game.add.sprite(100, 300, 'player');
 
     //enable physics on the player
-    this.game.physics.arcade.enable(this.player);
+    this.game.physics.p2.enable(this.player);
 
     //player gravity
-    this.player.body.gravity.y = 1200;
+    this.game.physics.p2.gravity.y = 10;
+    //this.player.body.gravity.y = 1200;
+      this.player.body.fixedRotation = true;
 
     //properties when the player is ducked and standing, so we can use in update()
     var playerDuckImg = this.game.cache.getImage('playerDuck');
@@ -93,18 +98,17 @@ SideScroller.Game.prototype = {
       Object.keys(element.properties).forEach(function(key){
         sprite[key] = element.properties[key];
       });
-      sprite.body.gravity.y =1200;
+      this.game.physics.p2.enable(sprite);
+      sprite.body.gravity.y = 20;
       
       sprite.anchor.setTo(.5,.5);
       
       //walking 
       if (sprite['direction'] =='right'){
         console.log ('right');
-        //sprite.direction = 'right';
         sprite.body.velocity.x = 20;}
       else if (sprite['direction'] =='left'){
         console.log ('left');
-       // sprite.direction = 'left';
         sprite.scale.x *= -1;
         sprite.body.velocity.x = -20;}
       else {
@@ -112,12 +116,12 @@ SideScroller.Game.prototype = {
   },  
   update: function() {
     //collision
-    this.game.physics.arcade.collide(this.player, this.groundLayer, null, null, this);
+    /*this.game.physics.arcade.collide(this.player, this.groundLayer, null, null, this);
       this.game.physics.arcade.collide(this.player, this.dangerLayer, this.playerHit, null, this);
     this.game.physics.arcade.overlap(this.player, this.coins, this.collect, null, this);
     this.game.physics.arcade.collide(this.player, this.enemy, this.playerHit, null, this);  
      this.game.physics.arcade.collide(this.enemy, this.groundLayer, null, null, this);   
-     this.game.physics.arcade.collide(this.enemy, this.enemyWalls, this.enemyTurn, null, this); 
+     this.game.physics.arcade.collide(this.enemy, this.enemyWalls, this.enemyTurn, null, this);*/ 
     
     //only respond to keys and keep the speed if the player is alive
     if(this.player.alive) {
@@ -289,7 +293,7 @@ SideScroller.Game.prototype = {
   playerDuck: function() {
       //change image and update the body size for the physics engine
       this.player.loadTexture('playerDuck');
-      this.player.body.setSize(this.player.duckedDimensions.width, this.player.duckedDimensions.height);
+      //this.player.body.setSize(this.player.duckedDimensions.width, this.player.duckedDimensions.height);
       
       //we use this to keep track whether it's ducked or not
       this.player.isDucked = true;
