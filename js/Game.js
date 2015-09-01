@@ -45,15 +45,15 @@ SideScroller.Game.prototype = {
     this.game.physics.p2.enable(this.player);
 
     //player gravity
-    this.game.physics.p2.gravity.y = 10;
+    this.game.physics.p2.gravity.y = 1200;
     //this.player.body.gravity.y = 1200;
-      this.player.body.fixedRotation = true;
+    this.player.body.fixedRotation = true;
 
     //properties when the player is ducked and standing, so we can use in update()
     var playerDuckImg = this.game.cache.getImage('playerDuck');
     this.player.duckedDimensions = {width: playerDuckImg.width, height: playerDuckImg.height};
-    this.player.standDimensions = {width: this.player.width, height: this.player.height};
-    this.player.anchor.setTo(0.5, 1);
+   // this.player.standDimensions = {width: this.player.width, height: this.player.height};
+    //this.player.anchor.setTo(0.5, 1);
     
     //the camera will follow the player in the world
     this.game.camera.follow(this.player);
