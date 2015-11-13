@@ -17,10 +17,17 @@ SideScroller.Game.prototype = {
     this.backgroundlayer = this.map.createLayer('backgroundLayer');
     this.groundLayer = this.map.createLayer('Ground');
     this.dangerLayer = this.map.createLayer('Danger');
+<<<<<<< HEAD
+<<<<<<< HEAD
     //this.endLayer = this.map.createLayer('end');
             
       var a = this.game.physics.p2.convertCollisionObjects(this.map, "polygon")
-
+=======
+>>>>>>> parent of 5551c50... invisible enymy collision
+=======
+>>>>>>> parent of 5551c50... invisible enymy collision
+    this.endLayer = this.map.createLayer('end');
+      
     //collision on blockedLayer
    /* this.map.setCollisionBetween(1, 5000, true, this.groundLayer);
     this.map.setCollisionBetween(1, 5000, true, this.dangerLayer);
@@ -34,9 +41,6 @@ SideScroller.Game.prototype = {
     
     //create enemy  
     this.createEnemy(); 
-      
-    //create enemy walls
-    this.createEnemyWalls();
 
     //create player
     this.player = this.game.add.sprite(100, 300, 'player');
@@ -121,7 +125,17 @@ SideScroller.Game.prototype = {
     this.game.physics.arcade.overlap(this.player, this.coins, this.collect, null, this);
     this.game.physics.arcade.collide(this.player, this.enemy, this.playerHit, null, this);  
      this.game.physics.arcade.collide(this.enemy, this.groundLayer, null, null, this);   
+<<<<<<< HEAD
+<<<<<<< HEAD
      this.game.physics.arcade.collide(this.enemy, this.enemyWalls, this.enemyTurn, null, this);*/ 
+
+     this.game.physics.arcade.collide(this.enemy, this.endLayer, this.enemyTurn, null, this); 
+
+=======
+>>>>>>> parent of 5551c50... invisible enymy collision
+=======
+>>>>>>> parent of 5551c50... invisible enymy collision
+     this.game.physics.arcade.collide(this.enemy, this.endLayer, this.enemyTurn, null, this); 
     
     //only respond to keys and keep the speed if the player is alive
     if(this.player.alive) {
@@ -254,24 +268,6 @@ SideScroller.Game.prototype = {
     result.forEach(function(element){
       this.createFromTiledObject(element, this.coins);
     }, this);
-  },
-    //create enemy walls
-  createEnemyWalls: function() {
-    this.enemyWalls = this.game.add.group();
-    this.enemyWalls.enableBody = true;
-    var result = this.map.objects.enemyWalls;  
-    result.forEach(function(element){
-      //this.createFromTiledObject(element, this.enemyWalls);
-        var sprite = this.enemyWalls.create(element.x, element.y, null);
-      sprite.width = element.width;
-      sprite.height = element.height;
-      sprite.body.immovable = true;
-      //copy all properties to the sprite
-      Object.keys(element.properties).forEach(function(key){
-        sprite[key] = element.properties[key];
-      });
-    }, this);
-      console.log(this.map.objects);
   },
     //create enemy
   createEnemy: function() {
